@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { ErrorHandling } from "./modules/ErrorHandling";
 import FloatingButton from "./modules/FloatingButton";
 import Interceptor from "./modules/Interceptor";
@@ -7,6 +6,7 @@ export { ErrorHandling, Interceptor, logException, logMessage, FloatingButton };
 let data = null;
 let api_key = "";
 const Zipy = async(key) => {
+  console.log(key,"this is key")
   api_key = key;
   await fetch("https://mobileservice.zipy.ai/verify/" + key)
       .then((response) => response.json())
@@ -15,7 +15,6 @@ const Zipy = async(key) => {
         data = json;
       })
       .catch((error) => console.error(error));
-  
   ErrorHandling();
   Interceptor((start = new Date().getTime()));
 };

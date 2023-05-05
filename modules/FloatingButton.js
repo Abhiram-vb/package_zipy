@@ -1,8 +1,5 @@
-import {Alert,View} from 'react-native';
-
 import {FAB} from 'react-native-elements';
 import React from 'react';
-import {deleteData, getData} from './SqlHandling';
 import { api_key } from 'package_zipy';
 import { LOGDATA, SDK_VERSION, S_ID, TECH_STACK } from 'package_zipy/utils/constants';
 
@@ -41,19 +38,18 @@ const FloatingButton = () => {
         LOGDATA.pop();
         console.log("data sent successfully");
       }
-      // Here we need to write a code to send logData to backend through a specific event.
     }
   return (
-    <View>
+    <>
       <FAB
         title="Report Bug"
         titleStyle={{backgroundColor: 'red'}}
         placement="right"
         upperCase
         color="red"
-        onPress={thisisclicked}
+        onPress={thisisclicked}   
       />
-    </View>
+    </>
   );
 };
 

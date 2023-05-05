@@ -6,6 +6,7 @@ import {
   TECH_STACK,
 } from "../utils/constants";
 export const Interceptor = (start) => {
+  console.log("came here ",data)
   if (data?.data?.network_capture) {
     let method = "other";
     const originalFetch = fetch;
