@@ -6,18 +6,18 @@ import { logException, logMessage } from "./modules/ZipyLogger";
 export { ErrorHandling, Interceptor, logException, logMessage, FloatingButton };
 let data = null;
 let api_key = "";
-const Zipy = (key) => {
+const Zipy = async(key) => {
   api_key = key;
-  ErrorHandling();
-  Interceptor((start = new Date().getTime()));
-  useEffect(() => {
-    fetch("https://mobileservice.zipy.ai/verify/" + key)
+  await fetch("https://mobileservice.zipy.ai/verify/" + key)
       .then((response) => response.json())
       .then((json) => {
+        console.log(json,"this is json")
         data = json;
       })
       .catch((error) => console.error(error));
-  }, []);
+  
+  ErrorHandling();
+  Interceptor((start = new Date().getTime()));
 };
 export default Zipy;
 export { data, api_key };
